@@ -1,0 +1,110 @@
+﻿<Window x:Class="GetUpdates.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetUpdates"
+        mc:Ignorable="d"
+        Title="Wuapi UpdateSearcher" Height="488.6" Width="973.199" Name="GUI" Icon="Resources/Update.ico">
+
+    <Grid x:Name="myGrid" VerticalAlignment="Stretch" DataContext="{Binding ElementName=GUI}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="892*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="SearchBox" Margin="11.795,10,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="433" Grid.Column="1" />
+        <DataGrid x:Name="myDataGrid" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" 
+                  Background="White" RowBackground="White" AlternatingRowBackground="WhiteSmoke" SelectionMode="Extended" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Margin="0,49,0,42" Grid.ColumnSpan="2">
+            <!-- ItemsSource="{Binding Updates}"-->
+            <DataGrid.Resources>
+                <local:SearchValueConverter x:Key="SearchValueConverter" />
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="local:DataGridTextSearch.IsTextMatch">
+                        <Setter.Value>
+                            <MultiBinding Converter="{StaticResource SearchValueConverter}">
+                                <Binding RelativeSource="{RelativeSource Self}" Path="Content.Text" />
+                                <Binding RelativeSource="{RelativeSource Self}" Path="(local:DataGridTextSearch.SearchValue)" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="True">
+                            <Setter Property="Background" Value="Orange" />
+                        </Trigger>
+                        <!--<Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="False">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                            
+                        </Trigger>-->
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Button x:Name="filterApplyBTN" Content="Als Filter setzen" HorizontalAlignment="Left" Margin="449.795,13,0,0" VerticalAlignment="Top" Width="116" Click="applyFilterButton_Pressed" Grid.Column="1"/>
+        <Button x:Name="filterRemoveBTN" Content="Filter entfernen" HorizontalAlignment="Left" Margin="570.795,13,0,0" VerticalAlignment="Top" Width="97" Click="removeFilterButton_Pressed" Grid.Column="1"/>
+        <Button x:Name="exportBTN" Content="CSV Export" HorizontalAlignment="Left" Margin="691.795,13,0,0" VerticalAlignment="Top" Width="75" Click="exportButton_Pressed" Grid.Column="1"/>
+        <Label x:Name="txtLBL" Content="Suche/Filter:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <StatusBar x:Name="statusBar" Height="24" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <TextBlock x:Name="statusText1">Bereit...</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <Separator/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <ProgressBar x:Name="statusPB" Width="120" Height="18" Value="100"/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="3">
+                <Separator/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="4">
+                <TextBlock x:Name="statusText2"></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="5">
+                <Separator/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="6">
+                <TextBlock x:Name="statusText3"></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <!--Set Focusable="False" according to https://stackoverflow.com/questions/18244605/how-to-avoid-flashing-button-wpf-->
+        <!--Custom button generated with Inkscape and SVGtoXAML by A. Vogelbacher-->
+        <Button x:Name="configBTN" HorizontalAlignment="Left" Margin="787.795,3,0,0" VerticalAlignment="Top" Width="41" Height="41" Click="Button_Click" Background="Black" Grid.Column="1" Focusable="False">
+            <Path Fill="White" Stroke="Black" Width="36" Height="36" Stretch="Fill">
+                <Path.Data>
+                    <Geometry>F1 M512,512z M0,0z M510.71186,284.27634L510.71186,223.55608 455.60646,203.31882C450.80707,184.78216,444.36825,167.27674,434.85273,151.18479L435.40488,151.11349 461.63245,96.488859 418.82025,53.559441 364.25508,79.550859 364.20248,79.627319C348.11047,70.111739,330.63562,64.07216,312.09556,59.277874L291.8702,3.6271186 231.15333,3.6271186 210.91438,59.281272C192.37432,64.07386,174.87569,70.789598,158.78373,80.311913L158.70223,79.890587 104.0844,53.729278 61.154983,96.573752 87.1464,151.14911 87.23134,151.21531C77.709027,167.30556,68.273362,184.7923,63.480767,203.32896L4.440704,223.55608 4.440704,284.27634 63.482459,304.5153C68.275043,323.05875,76.689676,340.55059,86.213692,356.64594L86.63672,356.72234 60.903531,411.33677 103.95868,454.27468 158.64275,428.28496 158.75318,428.20686C174.84853,437.71559,192.36075,446.59912,210.90081,451.4002L231.15333,509.89828 291.8702,509.89828 312.11255,451.40186C330.65261,446.60079,348.14445,438.46647,364.2364,428.95095L364.3213,428.65364 418.94253,454.46328 461.86855,411.43702 435.87713,356.76313 435.79903,356.65952C445.31455,340.56587,450.80879,323.06215,455.60816,304.52379z M261.51431,355.11353C205.62571,355.11353 160.31784,309.81755 160.31784,253.91876 160.31784,198.03185 205.62571,152.71889 261.51431,152.71889 317.40971,152.71889 362.71079,198.03185 362.71079,253.91876 362.71079,309.81755 317.40971,355.11353 261.51431,355.11353z</Geometry>
+                </Path.Data>
+            </Path>
+
+        </Button>
+        <!--Custom button generated with Inkscape and direct XAML export by A. Vogelbacher-->
+        <Button x:Name="aboutBTN" Margin="833.795,3,0,0" VerticalAlignment="Top" Height="41" Click="aboutBTN_Click" HorizontalAlignment="Left" Width="41" Background="Black" Grid.Column="1" Focusable="False">
+            <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                <Canvas Name="Capa_1" Width="535.5" Height="535.5" Canvas.Left="0" Canvas.Top="0">
+
+                    <TextBlock xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" FontSize="730" FontWeight="Normal" FontFamily="Franklin Gothic Demi" FontStyle="normal" Foreground="#FFFFFFFF" Canvas.Left="77" Canvas.Top="-153" Name="text56" Height="734" RenderTransformOrigin="0.466,0.545">
+      <Span FontSize="733.33331299">?</Span>
+                    </TextBlock>
+                </Canvas>
+            </Viewbox>
+        </Button>
+    </Grid>
+
+</Window>

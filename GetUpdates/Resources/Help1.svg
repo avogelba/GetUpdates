@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Help"
+   x="0px"
+   y="0px"
+   width="535.5px"
+   height="535.5px"
+   viewBox="0 0 535.5 535.5"
+   style="enable-background:new 0 0 535.5 535.5;"
+   xml:space="preserve"
+   sodipodi:docname="Help1.svg"
+   inkscape:version="0.92.1 r15371"><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   id="namedview"
+   showgrid="false"
+   inkscape:snap-text-baseline="true"
+   inkscape:zoom="1.557423"
+   inkscape:cx="256.83453"
+   inkscape:cy="278.04727"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Help" />
+
+<rect
+   id="rect1"
+   width="534.21582"
+   height="535.5"
+   x="0.64208633"
+   y="-1.3721819e-008"
+   style="stroke-width:1.02841401"/>
+<text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:733.33331299px;line-height:1.25;font-family:'Franklin Gothic Demi';-inkscape-font-specification:'Franklin Gothic Demi, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+   x="77.050362"
+   y="513.66907"
+   id="text">
+   <tspan
+     sodipodi:role="line"
+     id="tspan54"
+     x="77.050362"
+     y="513.66907">?</tspan>
+</text>
+</svg>
