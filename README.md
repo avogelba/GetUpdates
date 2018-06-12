@@ -9,7 +9,9 @@ Windows Update API tool to fetch updates and export to CSV
 - Actually done to show output of diferent Windows Update display (Clasic Programs & Features, windows 10 Update History, Powershell Scripts) and be able to search better for KB Names
 - does not show updates not distributed by Windows Update
 
-![Different Outputs](https://github.com/avogelba/GetUpdates/blob/master/diffs.png)
+![Different Outputs](https://github.com/avogelba/GetUpdates/blob/master/diffs.jpg)
+
+![Methos to get Installed Updates](https://github.com/avogelba/GetUpdates/blob/master/getInfos.jpg)
 
 # WUApi using
 Method 1:
